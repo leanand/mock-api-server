@@ -2,6 +2,7 @@
 
 express = require 'express'
 loadFiles = require './load_files'
+cors = require 'cors'
 parseJsonFiles = require './parse_json_files'
 lumber = require 'clumber'
 mockApiServer = require './index'
@@ -59,6 +60,7 @@ class Server
 
     @app = express()
     @app.use express.json()
+    @app.use cors()
     @app.use @_cannedResponses
     @app.get '/mock-api/stop', @_stop
     @app.get '/mock-api/reset', @_reset
